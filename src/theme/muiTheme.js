@@ -18,7 +18,8 @@ const theme = createMuiTheme({
   overrides: {
     MuiDrawer: {
       paper: {
-        top: 'none'
+        top: 'none',
+        position: 'static'
       }
     }
   }

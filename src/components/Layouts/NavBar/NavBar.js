@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Drawer, Divider, IconButton } from '@material-ui/core';
-import { Menu, Mail, Inbox, ChevronLeft } from '@material-ui/icons';
+import { Dashboard, DesktopWindows, Work } from '@material-ui/icons';
 
 // STYLES
 import withNavBarStyles from './NavBar.style';
@@ -14,11 +14,15 @@ function NavBar({ classes }) {
       <Drawer variant="permanent" classes={{ paper: classes.drawer }}>
         <div>
           <IconButton>
-            <Menu />
+            <Dashboard />
           </IconButton>
           <Divider />
           <IconButton>
-            <Mail />
+            <DesktopWindows />
+          </IconButton>
+          <Divider />
+          <IconButton>
+            <Work />
           </IconButton>
         </div>
       </Drawer>

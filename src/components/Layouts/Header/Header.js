@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import { Menu, MenuOpen } from '@material-ui/icons';
+import { ReactComponent as Logo } from '../../../theme/logo.svg';
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -12,7 +13,8 @@ const useStyles = makeStyles(theme => ({
     borderWidth: theme.spacing(0.25)
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginLeft: theme.spacing(2)
   }
 }));
 
@@ -27,11 +29,11 @@ export default function Header() {
           <IconButton>
             <Menu />
           </IconButton>
+          <Logo style={{ height: 40, width: 40 }} />
           {/* noWrap in Typography is used to prevent it from affecting grid size when spanned */}
           <Typography variant="h6" className={classes.title} noWrap>
             REACT SCHEDULER
           </Typography>
-          {/* <label>DASHBOARD asdlflasdlf</label> */}
           <Button variant="contained" color="secondary" className={classes.menuButton}>
             Login
           </Button>

@@ -6,13 +6,16 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      light: '#63ccff',
-      main: '#0DCAE8',
-      dark: '#006db3',
+      light: '#757ce8',
+      main: '#1EB980',
+      dark: '#002884',
       contrastText: '#fff'
     },
     secondary: {
-      main: '#19212B'
+      light: '#ff7961',
+      main: '#2BB582', // Used in default state of button
+      dark: '#128158', // Used in hover state of button
+      contrastText: '#fff' // Used in button text
     }
   },
   overrides: {

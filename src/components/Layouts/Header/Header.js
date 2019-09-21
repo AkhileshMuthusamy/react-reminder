@@ -26,8 +26,8 @@ export default function Header() {
       <AppBar position="static">
         {/* In order to remove padding in Toolbar disableGutters property is used. */}
         <Toolbar disableGutters={true}>
-          <IconButton>
-            <Menu />
+          <IconButton style={{ marginLeft: '5px' }}>
+            <Menu style={{ color: '#fff' }} />
           </IconButton>
           <Logo style={{ height: 40, width: 40 }} />
           {/* noWrap in Typography is used to prevent it from affecting grid size when spanned */}

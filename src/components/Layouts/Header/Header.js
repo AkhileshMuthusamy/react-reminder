@@ -27,9 +27,11 @@ export default function Header() {
           <IconButton>
             <Menu />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            DASHBOARD
+          {/* noWrap in Typography is used to prevent it from affecting grid size when spanned */}
+          <Typography variant="h6" className={classes.title} noWrap>
+            REACT SCHEDULER
           </Typography>
+          {/* <label>DASHBOARD asdlflasdlf</label> */}
           <Button variant="contained" color="secondary" className={classes.menuButton}>
             Login
           </Button>

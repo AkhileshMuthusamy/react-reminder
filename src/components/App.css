@@ -1,11 +1,9 @@
 .grid-container {
   display: grid;
   height: 100%;
-  grid-template-columns: max-content auto;
-  grid-template-rows: max-content auto;
-  /* grid-gap: 10px; */
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: max-content 1fr;
   background-color: #ffffff;
-  /* padding: 10px; */
 }
 
 .header {

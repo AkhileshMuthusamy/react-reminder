@@ -90,7 +90,7 @@ export default function Dashboard() {
       </div>
       <div className={classes.graphContainer}>
         <Card style={{ marginTop: 10, padding: 10 }}>
-          <ResponsiveContainer style={{ flex: 1 }} width="99%" minHeight={300}>
+          <ResponsiveContainer width="99%" minHeight={300}>
             <LineChart data={data}>
               <Line type="monotone" dataKey="uv" stroke="#8884d8" />
               {/* <CartesianGrid stroke="#ccc" /> */}

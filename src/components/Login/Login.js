@@ -48,6 +48,10 @@ export default function Login() {
             password: Yup.string()
               .required('Password Required')
               .min(10, 'Must be more than 10 characters')
+              .matches(
+                /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{10,64})/,
+                'Must contain atleast one special characters, one number, one uppercase and lowercase letter'
+              )
           })}
           onSubmit={(values, formikActions) => {
             console.log('Form submitted');

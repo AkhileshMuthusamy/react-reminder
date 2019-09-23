@@ -82,7 +82,7 @@ export default function Login() {
                   error={errors.email && touched.email ? true : false}
                   className={classes.stretchInput}
                 />
-                {errors.email && touched.email && <small>{errors.email}</small>}
+                {errors.email && touched.email && <small style={{ color: 'red' }}>{errors.email}</small>}
                 <TextField
                   label="Password"
                   name="password"
@@ -95,7 +95,7 @@ export default function Login() {
                   error={errors.password && touched.password ? true : false}
                   className={classes.stretchInput}
                 />
-                {errors.password && touched.password && <small>{errors.password}</small>}
+                {errors.password && touched.password && <small style={{ color: 'red' }}>{errors.password}</small>}
                 <div className={classes.buttonContainer}>
                   <Button variant="outlined" color="primary" onClick={handleReset} disabled={!dirty || isSubmitting}>
                     RESET

@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '100%',
     justifyContent: 'center'
+  },
+  stretchInput: {
+    width: '100%'
   }
 }));
 
@@ -37,7 +40,7 @@ export default function Login() {
       <div className={classes.loginPage}>
         <Typography variant="h4">LOGIN</Typography>
         <Formik
-          initialValues={{ email: 'Ak@Ak.com', password: '' }}
+          initialValues={{ email: '', password: '' }}
           validationSchema={Yup.object().shape({
             email: Yup.string()
               .email()
@@ -55,6 +58,7 @@ export default function Login() {
           {props => {
             const {
               values,
+              touched,
               handleChange,
               handleReset,
               handleBlur,
@@ -74,8 +78,11 @@ export default function Login() {
                   margin="normal"
                   value={values.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.email && touched.email ? true : false}
+                  className={classes.stretchInput}
                 />
-                {errors.email && <div>{errors.email}</div>}
+                {errors.email && touched.email && <small>{errors.email}</small>}
                 <TextField
                   label="Password"
                   name="password"
@@ -85,9 +92,10 @@ export default function Login() {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={false}
+                  error={errors.password && touched.password ? true : false}
+                  className={classes.stretchInput}
                 />
-                {errors.password && <div>{errors.password}</div>}
+                {errors.password && touched.password && <small>{errors.password}</small>}
                 <div className={classes.buttonContainer}>
                   <Button variant="outlined" color="primary" onClick={handleReset} disabled={!dirty || isSubmitting}>
                     RESET

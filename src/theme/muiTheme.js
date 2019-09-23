@@ -24,6 +24,11 @@ const theme = createMuiTheme({
         top: 'none',
         position: 'static'
       }
+    },
+    MuiButton: {
+      root: {
+        margin: 10
+      }
     }
   }
 });

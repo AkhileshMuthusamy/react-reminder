@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Header({ dispatch }) {
+function Header({ dispatch, isOpen }) {
   const classes = useStyles();
 
   return (
@@ -28,7 +28,7 @@ function Header({ dispatch }) {
         {/* In order to remove padding in Toolbar disableGutters property is used. */}
         <Toolbar disableGutters={true}>
           <IconButton style={{ marginLeft: '5px' }} onClick={() => dispatch({ type: 'DRAWER_ACTION' })}>
-            <Menu style={{ color: '#fff' }} />
+            {isOpen ? <MenuOpen style={{ color: '#fff' }} /> : <Menu style={{ color: '#fff' }} />}
           </IconButton>
           <Logo style={{ height: 40, width: 40 }} />
           {/* noWrap in Typography is used to prevent it from affecting grid size when spanned */}
@@ -44,4 +44,8 @@ function Header({ dispatch }) {
   );
 }
 
-export default connect()(Header);
+const mapStateToProps = state => ({
+  isOpen: state.isOpen
+});
+
+export default connect(mapStateToProps)(Header);

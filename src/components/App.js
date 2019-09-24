@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import NavBar from './Layouts/NavBar/NavBar';
 import Header from './Layouts/Header/Header';
 import Dashboard from './Dashboard/Dashboard';
+import Monitor from './Monitor/Monitor';
 import './App.css';
 
 export default class App extends Component {
@@ -15,7 +17,8 @@ export default class App extends Component {
           <NavBar />
         </div>
         <div className="content">
-          <Dashboard />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/monitor" component={Monitor} />
         </div>
       </div>
     );

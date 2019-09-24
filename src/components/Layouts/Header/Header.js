@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import { Menu, MenuOpen } from '@material-ui/icons';
 import { ReactComponent as Logo } from '../../../theme/logo.svg';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header() {
+function Header({ dispatch }) {
   const classes = useStyles();
 
   return (
@@ -26,7 +27,7 @@ export default function Header() {
       <AppBar position="static">
         {/* In order to remove padding in Toolbar disableGutters property is used. */}
         <Toolbar disableGutters={true}>
-          <IconButton style={{ marginLeft: '5px' }}>
+          <IconButton style={{ marginLeft: '5px' }} onClick={() => dispatch({ type: 'DRAWER_ACTION' })}>
             <Menu style={{ color: '#fff' }} />
           </IconButton>
           <Logo style={{ height: 40, width: 40 }} />
@@ -42,3 +43,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default connect()(Header);

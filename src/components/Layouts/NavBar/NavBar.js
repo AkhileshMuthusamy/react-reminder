@@ -5,24 +5,20 @@ import { withRouter } from 'react-router-dom';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Dashboard, DesktopWindows, Work } from '@material-ui/icons';
 
+import { connect } from 'react-redux';
+
 // STYLES
 import withNavBarStyles from './NavBar.style';
 
-// const drawerWidth = 50;
-
-function NavBar({ classes, history }) {
-  const [open, setOpen] = React.useState(false);
-
-  function handleDrawer() {
-    open ? setOpen(false) : setOpen(true);
-  }
+function NavBar({ classes, history, isOpen }) {
+  console.dir(isOpen);
 
   return (
     <div>
       <Drawer
         variant="permanent"
         classes={{
-          paper: clsx({ [classes.drawer]: true, [classes.drawerOpen]: open, [classes.drawerClose]: !open })
+          paper: clsx({ [classes.drawer]: true, [classes.drawerOpen]: isOpen, [classes.drawerClose]: !isOpen })
         }}
       >
         <div>
@@ -62,4 +58,8 @@ function NavBar({ classes, history }) {
   );
 }
 
-export default withRouter(withNavBarStyles(NavBar));
+const mapStateToProps = state => ({
+  isOpen: state.isOpen
+});
+
+export default connect(mapStateToProps)(withRouter(withNavBarStyles(NavBar)));

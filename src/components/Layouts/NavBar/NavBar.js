@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { withRouter } from 'react-router-dom';
 
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Dashboard, DesktopWindows, Work } from '@material-ui/icons';
@@ -9,7 +10,7 @@ import withNavBarStyles from './NavBar.style';
 
 // const drawerWidth = 50;
 
-function NavBar({ classes }) {
+function NavBar({ classes, history }) {
   const [open, setOpen] = React.useState(false);
 
   function handleDrawer() {
@@ -26,13 +27,23 @@ function NavBar({ classes }) {
       >
         <div>
           <List>
-            <ListItem button onClick={handleDrawer}>
+            <ListItem
+              button
+              onClick={() => {
+                history.push('/dashboard');
+              }}
+            >
               <ListItemIcon>
                 <Dashboard />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button onClick={handleDrawer}>
+            <ListItem
+              button
+              onClick={() => {
+                history.push('/monitor');
+              }}
+            >
               <ListItemIcon>
                 <DesktopWindows />
               </ListItemIcon>
@@ -51,4 +62,4 @@ function NavBar({ classes }) {
   );
 }
 
-export default withNavBarStyles(NavBar);
+export default withRouter(withNavBarStyles(NavBar));

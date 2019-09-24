@@ -5,12 +5,13 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import muiTheme from './theme/muiTheme';
 
 import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+
+import { Routes } from './Route';
 
 ReactDOM.render(
   <MuiThemeProvider theme={muiTheme}>
-    <App />
+    <Routes />
   </MuiThemeProvider>,
   document.getElementById('root')
 );

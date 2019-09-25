@@ -45,7 +45,7 @@ function NavBar({ classes, history, isOpen }) {
               </ListItemIcon>
               <ListItemText primary="Monitor" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => history.push('/tasks')}>
               <ListItemIcon>
                 <Work />
               </ListItemIcon>

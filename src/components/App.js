@@ -5,6 +5,7 @@ import Header from './Layouts/Header/Header';
 import Dashboard from './Dashboard/Dashboard';
 import Monitor from './Monitor/Monitor';
 import './App.css';
+import { Tasks } from './Tasks';
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
         <div className="content">
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/monitor" component={Monitor} />
+          <Route path="/tasks" component={Tasks} />
         </div>
       </div>
     );

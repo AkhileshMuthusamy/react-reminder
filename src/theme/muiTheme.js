@@ -29,6 +29,14 @@ const theme = createMuiTheme({
       root: {
         margin: 10
       }
+    },
+    MuiFab: {
+      root: {
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+        marginBottom: 10
+      }
     }
   }
 });

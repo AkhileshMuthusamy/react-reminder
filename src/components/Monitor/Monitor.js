@@ -24,7 +24,7 @@ export default function Monitor() {
             <MaterialTable
               columns={columns}
               data={query => {
-                console.dir(query);
+                console.log('Query', query);
                 return new Promise((resolve, reject) => {
                   let url = 'https://reqres.in/api/users?';
                   url += 'per_page=' + query.pageSize;
@@ -53,6 +53,9 @@ export default function Monitor() {
                 columnsButton: true
               }}
               icons={tableIcons}
+              tableRef={props => {
+                console.log('hooks', props);
+              }}
             ></MaterialTable>
           </div>
         );

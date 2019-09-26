@@ -52,56 +52,55 @@ export default function Tasks() {
   ];
 
   return (
-    <AutoSizer>
+    <AutoSizer disableWidth>
       {({ height, width }) => {
         console.log(`Height: ${height} | Width: ${width}`);
         const pageSize = Math.floor((height - 192) / 48);
         console.log(`Page Size: ${pageSize}`);
         return (
-          <div style={{ height: `${height}px`, width: `${width}px`, overflowY: 'auto' }}>
-            <MaterialTable
-              title="Tasks"
-              columns={columns}
-              data={data}
-              options={{
-                pageSize: pageSize,
-                pageSizeOptions: [],
-                doubleHorizontalScroll: true,
-                paginationType: 'normal',
-                search: false,
-                showTitle: true,
-                toolbar: true,
-                // paging: false,
-                selection: true,
-                columnsButton: true
-              }}
-              components={{
-                Toolbar: props => (
-                  <Fragment>
-                    <MTableToolbar {...props} />
-                    {/* <div style={{ padding: '0px 10px' }}> */}
-                    <Fab variant="extended" color="primary" size="medium">
-                      <Add style={{ marginRight: 5 }} /> ADD
-                    </Fab>
-                    <Fab variant="extended" color="primary" size="medium">
-                      <Edit style={{ marginRight: 5 }} /> EDIT
-                    </Fab>
-                    <Fab variant="extended" color="primary" size="medium">
-                      <DeleteOutline style={{ marginRight: 5 }} /> Delete
-                    </Fab>
-                    <Fab variant="extended" color="primary" size="medium">
-                      <PlayArrow style={{ marginRight: 5 }} /> Run
-                    </Fab>
-                    <Fab variant="extended" color="primary" size="medium">
-                      <Tune style={{ marginRight: 5 }} /> Properties
-                    </Fab>
-                    {/* </div> */}
-                  </Fragment>
-                )
-              }}
-              icons={tableIcons}
-            ></MaterialTable>
-          </div>
+          <MaterialTable
+            title="Tasks"
+            columns={columns}
+            data={data}
+            options={{
+              pageSize: pageSize,
+              pageSizeOptions: [],
+              doubleHorizontalScroll: true,
+              paginationType: 'normal',
+              search: false,
+              showTitle: true,
+              toolbar: true,
+              // paging: false,
+              selection: true,
+              columnsButton: true
+            }}
+            components={{
+              Toolbar: props => (
+                <Fragment>
+                  <MTableToolbar {...props} />
+                  {/* <div style={{ padding: '0px 10px' }}> */}
+                  <Fab variant="extended" color="primary" size="medium">
+                    <Add style={{ marginRight: 5 }} /> ADD
+                  </Fab>
+                  <Fab variant="extended" color="primary" size="medium">
+                    <Edit style={{ marginRight: 5 }} /> EDIT
+                  </Fab>
+                  <Fab variant="extended" color="primary" size="medium">
+                    <DeleteOutline style={{ marginRight: 5 }} /> Delete
+                  </Fab>
+                  <Fab variant="extended" color="primary" size="medium">
+                    <PlayArrow style={{ marginRight: 5 }} /> Run
+                  </Fab>
+                  <Fab variant="extended" color="primary" size="medium">
+                    <Tune style={{ marginRight: 5 }} /> Properties
+                  </Fab>
+                  {/* </div> */}
+                </Fragment>
+              )
+            }}
+            icons={tableIcons}
+          ></MaterialTable>
+          // </div>
         );
       }}
     </AutoSizer>

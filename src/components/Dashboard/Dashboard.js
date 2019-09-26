@@ -36,8 +36,7 @@ const useStyles = makeStyles(theme => ({
     padding: 10
   },
   main: {
-    height: '100%',
-    overflowY: 'auto'
+    height: '100%'
   }
 }));
 

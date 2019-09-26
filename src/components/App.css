@@ -25,4 +25,5 @@
   grid-row-end: 3;
   min-height: 100%;
   padding: 15px;
+  overflow: auto;
 }

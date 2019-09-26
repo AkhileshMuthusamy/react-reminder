@@ -18,6 +18,7 @@ export default class App extends Component {
           <NavBar />
         </div>
         <div className="content">
+          <Route exact path="/" component={Dashboard} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/monitor" component={Monitor} />
           <Route path="/tasks" component={Tasks} />

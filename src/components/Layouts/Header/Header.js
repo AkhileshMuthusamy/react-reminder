@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import { Menu, MenuOpen } from '@material-ui/icons';
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Header({ dispatch, isOpen }) {
+function Header({ dispatch, isOpen, history }) {
   const classes = useStyles();
 
   return (
@@ -35,7 +36,12 @@ function Header({ dispatch, isOpen }) {
           <Typography variant="h6" className={classes.title} noWrap>
             REACT SCHEDULER
           </Typography>
-          <Button variant="contained" color="secondary" className={classes.menuButton}>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.menuButton}
+            onClick={() => history.push('/login')}
+          >
             Login
           </Button>
         </Toolbar>
@@ -48,4 +54,4 @@ const mapStateToProps = state => ({
   isOpen: state.isOpen
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));

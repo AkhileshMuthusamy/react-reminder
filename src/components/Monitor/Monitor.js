@@ -42,11 +42,10 @@ export default function Monitor() {
             options={{
               pageSize: pageSize,
               pageSizeOptions: [],
-              doubleHorizontalScroll: true,
               paginationType: 'normal',
               search: false,
               showTitle: false,
-              toolbar: true,
+              toolbar: false,
               paging: true,
               selection: true,
               columnsButton: true

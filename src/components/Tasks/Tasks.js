@@ -65,7 +65,6 @@ export default function Tasks() {
             options={{
               pageSize: pageSize,
               pageSizeOptions: [],
-              doubleHorizontalScroll: true,
               paginationType: 'normal',
               search: false,
               showTitle: true,
@@ -78,7 +77,6 @@ export default function Tasks() {
               Toolbar: props => (
                 <Fragment>
                   <MTableToolbar {...props} />
-                  {/* <div style={{ padding: '0px 10px' }}> */}
                   <Fab variant="extended" color="primary" size="medium">
                     <Add style={{ marginRight: 5 }} /> ADD
                   </Fab>
@@ -94,7 +92,6 @@ export default function Tasks() {
                   <Fab variant="extended" color="primary" size="medium">
                     <Tune style={{ marginRight: 5 }} /> Properties
                   </Fab>
-                  {/* </div> */}
                 </Fragment>
               )
             }}

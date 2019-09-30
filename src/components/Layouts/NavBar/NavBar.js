@@ -11,8 +11,6 @@ import { connect } from 'react-redux';
 import withNavBarStyles from './NavBar.style';
 
 function NavBar({ classes, history, isOpen }) {
-  console.dir(isOpen);
-
   return (
     <div>
       <Drawer
@@ -26,7 +24,7 @@ function NavBar({ classes, history, isOpen }) {
             <ListItem
               button
               onClick={() => {
-                history.push('/dashboard');
+                history.push('/app/dashboard');
               }}
             >
               <ListItemIcon>
@@ -37,7 +35,7 @@ function NavBar({ classes, history, isOpen }) {
             <ListItem
               button
               onClick={() => {
-                history.push('/monitor');
+                history.push('/app/monitor');
               }}
             >
               <ListItemIcon>
@@ -45,7 +43,7 @@ function NavBar({ classes, history, isOpen }) {
               </ListItemIcon>
               <ListItemText primary="Monitor" />
             </ListItem>
-            <ListItem button onClick={() => history.push('/tasks')}>
+            <ListItem button onClick={() => history.push('/app/tasks')}>
               <ListItemIcon>
                 <Work />
               </ListItemIcon>

@@ -6,13 +6,35 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { tableIcons } from '../shared/materialTableIcons';
 
 export default function Monitor() {
-  const columns = [
-    { title: 'Task Name', field: 'avatar', removable: false },
-    { title: 'Description', field: 'first_name' },
-    { title: 'Task Method', field: 'last_name' },
-    { title: 'Last Change', field: 'lastChange' },
-    { title: 'Last Changed By', field: 'lastChangedBy' }
-  ];
+  let columns = [];
+
+  if (localStorage.getItem('monitorTable') === null) {
+    localStorage.setItem(
+      'monitorTable',
+      JSON.stringify({
+        0: { title: 'Avatar', field: 'avatar', removable: false },
+        1: { title: 'First Name', field: 'first_name' },
+        2: { title: 'Last Name', field: 'last_name' },
+        3: { title: 'Last Change', field: 'lastChange' },
+        4: { title: 'Last Changed By', field: 'lastChangedBy' }
+      })
+    );
+  }
+
+  let savedColumns = JSON.parse(localStorage.getItem('monitorTable'));
+  for (var columnIndex in savedColumns) {
+    columns.push(savedColumns[columnIndex]);
+  }
+
+  function handleColumnDrag(sourceIndex, destinationIndex) {
+    const sourceColumn = savedColumns[sourceIndex];
+    const destinationColumn = savedColumns[destinationIndex];
+
+    savedColumns[sourceIndex] = destinationColumn;
+    savedColumns[destinationIndex] = sourceColumn;
+    localStorage.setItem('monitorTable', JSON.stringify(savedColumns));
+  }
+
   return (
     <AutoSizer disableWidth>
       {({ height }) => {
@@ -50,6 +72,7 @@ export default function Monitor() {
               selection: true,
               columnsButton: true
             }}
+            onColumnDragged={handleColumnDrag}
             icons={tableIcons}
             tableRef={props => {
               console.log('hooks', props);

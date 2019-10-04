@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import MaterialTable, { MTableToolbar } from 'material-table';
 
-import { Fab, Dialog, AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { Fab, Dialog, AppBar, Toolbar, IconButton, LinearProgress } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -14,6 +14,7 @@ import { Add, DeleteOutline, Edit, PlayArrow, Tune, Close } from '@material-ui/i
 import { DropzoneArea } from 'material-ui-dropzone';
 import { Formik } from 'formik';
 import axios from 'axios';
+import DragAndDrop from '../shared/DragAndDrop/DragAndDrop';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -94,7 +95,7 @@ export default function Tasks() {
                 search: false,
                 showTitle: true,
                 toolbar: true,
-                // paging: false,
+                paging: true,
                 selection: true,
                 columnsButton: true
               }}
@@ -135,62 +136,44 @@ export default function Tasks() {
         </AppBar>
         <Formik
           initialValues={{ file: null }}
-          onSubmit={async values => {
-            let idCardBase64 = '';
+          onSubmit={values => {
             const formData = new FormData();
-            let reader = new FileReader();
-            reader.readAsDataURL(values.file[0]);
 
-            reader.onload = await function() {
-              idCardBase64 = reader.result;
-              console.log('base64', idCardBase64);
-              const start = idCardBase64.indexOf(';');
-              const base64withFileName = [
-                idCardBase64.slice(0, start),
-                `;filename=${values.file[0].name}`,
-                idCardBase64.slice(start)
-              ].join('');
-              console.log(base64withFileName);
+            values.file.forEach(file => {
+              formData.append('allfile', file, file.name);
+            });
 
-              formData.append('pdfFile', base64withFileName);
-              formData.append('allFile', values.file[0], values.file[0].name);
-
-              axios
-                .post('http://localhost:3001/api/emailAttachment', formData)
-                .then(res => {
-                  console.log(res);
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            };
-            reader.onerror = await function(error) {
-              console.log('Error: ', error);
-            };
-
-            alert(
-              JSON.stringify(
-                {
-                  fileName: values.file[0].name,
-                  type: values.file[0].type,
-                  size: `${values.file[0].size} bytes`
-                },
-                null,
-                2
-              )
-            );
+            axios
+              .post('http://localhost:3001/api/emailAttachments', formData)
+              .then(res => {
+                console.log(res);
+                alert('File uploaded successfully!');
+              })
+              .catch(err => {
+                console.log(err);
+              });
           }}
           render={({ values, handleSubmit, setFieldValue }) => {
             return (
               <form onSubmit={handleSubmit}>
+                <LinearProgress color="secondary" />
                 <DropzoneArea
+                  showPreviews={true}
+                  filesLimit={10}
                   onChange={file => {
-                    setFieldValue('file', file);
+                    console.dir(file);
                   }}
                 />
                 <Fab type="submit" variant="extended" color="primary" size="medium">
                   <Add style={{ marginRight: 5 }} /> SAVE
                 </Fab>
+                <DragAndDrop
+                  disabled={false}
+                  onChange={files => {
+                    console.dir(files);
+                    setFieldValue('file', files);
+                  }}
+                />
               </form>
             );
           }}

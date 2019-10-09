@@ -11,7 +11,6 @@ import { tableIcons } from '../shared/materialTableIcons';
 
 import { Add, DeleteOutline, Edit, PlayArrow, Tune, Close } from '@material-ui/icons';
 
-import { DropzoneArea } from 'material-ui-dropzone';
 import { Formik } from 'formik';
 import axios from 'axios';
 import DragAndDrop from '../shared/DragAndDrop/DragAndDrop';
@@ -157,13 +156,6 @@ export default function Tasks() {
             return (
               <form onSubmit={handleSubmit}>
                 <LinearProgress color="secondary" />
-                <DropzoneArea
-                  showPreviews={true}
-                  filesLimit={10}
-                  onChange={file => {
-                    console.dir(file);
-                  }}
-                />
                 <Fab type="submit" variant="extended" color="primary" size="medium">
                   <Add style={{ marginRight: 5 }} /> SAVE
                 </Fab>

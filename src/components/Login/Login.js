@@ -1,10 +1,12 @@
 import React from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
 import { TextField, Button, Typography } from '@material-ui/core';
+import { fakeAuth } from '../../auth/fake-auth';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -32,8 +34,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Login() {
+function Login({ history, location }) {
   const classes = useStyles();
+
+  const { from } = location.state || { from: { pathname: '/' } };
+
+  console.log('location', from.pathname);
+
+  if (fakeAuth.isAuthenticated === true) {
+    return <Redirect to={from} />;
+  }
+
   return (
     //   Here clsx package is used to merge two classes
     <div className={clsx({ [classes.container]: true, [classes.main]: true })}>
@@ -56,7 +67,9 @@ export default function Login() {
           onSubmit={(values, formikActions) => {
             console.log('Form submitted');
             console.dir(values);
+            fakeAuth.authenticate(() => 1);
             formikActions.setSubmitting(false);
+            history.push(from);
           }}
         >
           {props => {
@@ -125,3 +138,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default withRouter(Login);

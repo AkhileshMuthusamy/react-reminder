@@ -3,7 +3,7 @@ import './DragAndDrop.css';
 import pretty from 'prettysize';
 import { CloudUpload, Close } from '@material-ui/icons';
 import { Card, CardHeader, IconButton, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import { ReactComponent as PDF } from './Icons/pdf.svg';
 import { ReactComponent as JPG } from './Icons/jpg.svg';
 import { ReactComponent as UNKNOWN } from './Icons/unknown.svg';

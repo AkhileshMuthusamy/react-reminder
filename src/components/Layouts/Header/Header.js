@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Header({ dispatch, isOpen, history }) {
+function Header({ dispatch, isOpen, history, location }) {
   const classes = useStyles();
 
   return (
@@ -40,7 +40,10 @@ function Header({ dispatch, isOpen, history }) {
             variant="contained"
             color="secondary"
             className={classes.menuButton}
-            onClick={() => history.push('/login')}
+            onClick={() => {
+              console.log('header', location);
+              history.push({ pathname: '/login', state: { from: location } });
+            }}
           >
             Login
           </Button>

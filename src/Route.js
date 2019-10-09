@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import App from './components/App';
 import { Login } from './components/Login';
+import PrivateRoute from './auth/PrivateRoute';
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
+        <PrivateRoute exact path="/" component={App} />
         <Route path="/login" component={Login} />
-        <Route path="/app" component={App} />
+        <PrivateRoute path="/app" component={App} />
         <Redirect from="*" to="/" />
       </Switch>
     </Router>
